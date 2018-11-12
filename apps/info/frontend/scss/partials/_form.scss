@@ -1,0 +1,144 @@
+.form {
+	font-family: $font-reg;
+
+	&__flex {
+		display: flex;
+		@include rem(margin, 0px -10px);
+	}
+
+	&__flex &__field {
+		//flex-grow: 1;
+		@include rem(padding, 0px 10px);
+	}
+
+	&__field {
+		@include rem(margin-bottom, 10px);
+		position: relative;
+	}
+
+	&--field-inline {
+		display: flex;
+		align-items: center;
+	}
+
+	&__title {
+		@include rem(font-size, 15px);
+		@include rem(line-height, 20px);
+		@include rem(margin-bottom, 5px);
+		color: $color-grey;
+	}
+
+	&--field-inline &__title {
+		margin-bottom: 0px;
+		@include rem(margin-right, 10px);
+	}
+
+	&__input-wrap {
+		position: relative;
+	}
+
+	&__input {
+		@include rem(font-size, 16px);
+		@include rem(line-height, 16px);
+		@include rem(height, 42px);
+		@include rem(padding, 0px 10px);
+		width: 100%;
+		border: solid 2px $color-border-form;
+		background: $color-bg-form;
+		display: block;
+		border-radius: $border-radius-base;
+		color: $color-text-form;
+		transition: all $transition-speed ease;
+
+		&:-moz-placeholder {
+			color: $color-placeholder;
+			line-height: normal;
+		}
+
+		&::-webkit-input-placeholder {
+			color: $color-placeholder;
+			line-height: normal;
+		}
+
+		&:focus {
+			border: solid 2px darken($color-border-form,5%);
+			color: $color-text-form;
+		}
+
+		&[disabled] {
+			color: $color-placeholder;
+			border: solid 2px $color-disabled;
+		}
+	}
+
+	&__input-wrap.err &__input {
+		border: solid 2px $color-red;
+	}
+
+	&__input-icon {
+		color: $color-grey-lighter;
+		@include rem(font-size, 20px);
+		position: absolute;
+		top: 11px;
+		right: 12px;
+	}
+
+
+	/*&__textarea {
+		@include rem(font-size, 15px);
+		@include rem(line-height, 20px);
+		@include rem(height, 102px);
+		@include rem(padding, 10px);
+		width: 100%;
+		border: solid 1px $color-border-form;
+		background: #fff;
+		display: block;
+		font-family: $font-reg;
+		border-radius: $border-radius-base;
+		color: $color-base;
+		resize: none;
+
+		&::-webkit-input-placeholder {
+			line-height: 19px;
+			color: $color-placeholder;
+		}
+
+		&:focus {
+			border: solid 1px darken($color-border-form, 10%);
+			color: $color-base;
+		}
+
+		&.err {
+			border: solid 1px $color-red;
+		}
+	}*/
+}
+
+
+//------------------- < 1200 ------------------//
+@media only screen and (max-width: ($width-content-xl - 1px)) {
+	.form {
+
+	}
+}
+
+//------------------- < 992 ------------------//
+@media only screen and (max-width: ($width-content-lg - 1px)) {
+	.form {
+
+	}
+}
+
+//------------------- < 768 ------------------//
+@media only screen and (max-width: ($width-content-md - 1px)) {
+	.form {
+
+	}
+}
+
+//------------------- < 576 ------------------//
+@media only screen and (max-width: ($width-content-sm - 1px)) {
+	.form {
+
+	}
+}

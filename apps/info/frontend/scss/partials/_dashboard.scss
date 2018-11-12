@@ -1,0 +1,65 @@
+.board {
+	display: flex;
+	flex-wrap: wrap;
+	margin: -2px;
+
+	&__item {
+		padding: 2px;
+		width: (100% / 3);
+	}
+
+	&__body {
+		background: #fff;
+		@include rem(padding, 15px 20px);
+		border-radius: $border-radius-base;
+	}
+
+	&__value {
+		@include rem(font-size, 30px);
+		@include rem(line-height, 40px);
+		font-weight: bold;
+		color: $color-blue;
+	}
+
+	&__title {
+		@include rem(font-size, 14px);
+		@include rem(line-height, 20px);
+		color: $color-grey-dark;
+	}
+
+	&--orange &__value {
+		color: $color-orange;
+	}
+
+	&--red &__value {
+		color: $color-red;
+	}
+}
+
+//------------------- < 1200 ------------------//
+@media only screen and (max-width: ($width-content-xl - 1px)) {
+	.board {
+
+	}
+}
+
+//------------------- < 992 ------------------//
+@media only screen and (max-width: ($width-content-lg - 1px)) {
+	.board {
+
+	}
+}
+
+//------------------- < 768 ------------------//
+@media only screen and (max-width: ($width-content-md - 1px)) {
+	.board {
+
+	}
+}
+
+//------------------- < 576 ------------------//
+@media only screen and (max-width: ($width-content-sm - 1px)) {
+	.board {
+
+	}
+}

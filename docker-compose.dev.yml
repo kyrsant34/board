@@ -1,0 +1,99 @@
+version: '3'
+
+services:
+  board-nginx:
+    image: nginx:latest
+    container_name: "${COMPOSE_PROJECT_NAME}-nginx"
+    ports:
+      - "8000:8000"
+    volumes:
+      - './conf/nginx/django.conf:/etc/nginx/conf.d/default.conf'
+      - './public:/code/public'
+    depends_on:
+      - board-web
+    networks:
+      - outside-network
+
+  board-mysql:
+    restart: on-failure
+    container_name: "${COMPOSE_PROJECT_NAME}-mysql"
+    image: mysql:5.7
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci --init-connect='SET NAMES UTF8;'
+    expose:
+      - "3306"
+    env_file:
+      - .env
+    volumes:
+      - mysqldata:/var/lib/mysql
+    networks:
+      - outside-network
+
+  board-redis:
+    container_name: "${COMPOSE_PROJECT_NAME}-redis"
+    image: 'bitnami/redis:latest'
+    expose:
+      - "6379"
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - 'redisdata:/data'
+    networks:
+      - outside-network
+
+  board-web:
+    container_name: "${COMPOSE_PROJECT_NAME}-web"
+    image: "backend-backend:dev"
+    restart: on-failure
+    command: make run
+    env_file:
+      - .env
+    volumes:
+      - './:/code'
+      - 'pipcache:/root/.cache/pip/'
+    expose:
+      - 8000
+    depends_on:
+      - board-mysql
+      - board-redis
+    networks:
+      - outside-network
+
+  board-celery:
+    container_name: "${COMPOSE_PROJECT_NAME}-celery"
+    image: "backend-backend:dev"
+    restart: on-failure
+    command: celery -A backend worker -l info
+    env_file:
+      - .env
+    volumes:
+      - .:/code
+      - 'pipcache:/root/.cache/pip/'
+    depends_on:
+      - board-web
+    networks:
+      - outside-network
+
+  board-celery_beat:
+    container_name: "${COMPOSE_PROJECT_NAME}-celery-beat"
+    image: "backend-backend:dev"
+    restart: on-failure
+    command: celery -A backend beat -l debug
+    env_file:
+      - .env
+    volumes:
+      - .:/code
+      - 'pipcache:/root/.cache/pip/'
+    depends_on:
+      - board-web
+    networks:
+      - outside-network
+
+volumes:
+  mysqldata:
+  redisdata:
+  pipcache:
+
+networks:
+  outside-network:
+    external:
+      name: $APP_SERVICE_NETWORK_NAME

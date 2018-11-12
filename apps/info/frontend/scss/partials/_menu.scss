@@ -1,0 +1,76 @@
+.menu {
+	display: flex;
+	@include rem(height, 42px);
+
+	&__item {
+		@include rem(padding-right, 1px);
+
+		& a {
+			background: #fff;
+			display: block;
+			@include rem(font-size, 12px);
+			@include rem(line-height, 42px);
+			@include rem(padding, 0px 20px);
+			font-weight: bold;
+			text-align: center;
+			white-space: nowrap;
+			color: $color-grey;
+			transition: all $transition-speed ease;
+			font-family: $font-heavy;
+
+			&:hover {
+				background: darken($color-grey-extralight,5%);
+				color: $color-grey-dark;
+			}
+		}
+
+		&:first-child > a {
+			border-radius: $border-radius-base 0px 0px $border-radius-base;
+		}
+
+		&:last-child > a {
+			border-radius: 0px $border-radius-base $border-radius-base 0px;
+		}
+	}
+
+	&--active {
+		& a {
+			background: $color-blue;
+			color: #fff;
+			cursor: default;
+		}
+
+		& a:hover {
+			background: $color-blue;
+			color: #fff;
+		}
+	}
+}
+
+//------------------- < 1200 ------------------//
+@media only screen and (max-width: ($width-content-xl - 1px)) {
+	.menu {
+
+	}
+}
+
+//------------------- < 992 ------------------//
+@media only screen and (max-width: ($width-content-lg - 1px)) {
+	.menu {
+
+	}
+}
+
+//------------------- < 768 ------------------//
+@media only screen and (max-width: ($width-content-md - 1px)) {
+	.menu {
+
+	}
+}
+
+//------------------- < 576 ------------------//
+@media only screen and (max-width: ($width-content-sm - 1px)) {
+	.menu {
+
+	}
+}

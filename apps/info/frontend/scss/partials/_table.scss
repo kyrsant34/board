@@ -1,0 +1,140 @@
+.table {
+	&__line {
+		display: flex;
+		width: 100%;
+		margin-bottom: 2px;
+		background: #fff;
+		border-radius: $border-radius-base;
+		@include rem(padding, 0px 10px);
+	}
+
+	&--header {
+
+	}
+
+	&__body {
+		position: relative;
+		@include rem(min-height, 40px);
+	}
+
+	&--loading {
+		&:after {
+			content: "";
+			display: block;
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			background: rgba(255, 255, 255, 0.8) no-repeat url("#{$img-path}svg/loader.svg") 50% 50%;
+			z-index: 2;
+		}
+	}
+
+	&__body &__line {
+		border-radius: 0;
+
+		&:first-child {
+			border-radius: $border-radius-base $border-radius-base 0px 0px;
+		}
+
+		&:last-child {
+			border-radius: 0px 0px $border-radius-base $border-radius-base;
+		}
+	}
+
+	&__cell {
+		@include rem(padding, 0px 10px);
+		@include rem(font-size, 13px);
+		@include rem(line-height, 40px);
+		color: #000;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		flex-grow: 1;
+		width: (100% / 3);
+
+		&:first-child {
+			flex-grow: 0;
+		}
+	}
+
+	&--header &__cell {
+		display: block;
+		@include rem(font-size, 11px);
+		@include rem(line-height, 42px);
+		font-family: $font-heavy;
+		text-transform: uppercase;
+		color: $color-grey;
+	}
+
+	&__cell-icon {
+		font-size: 4px;
+		@include rem(line-height, 42px);
+		@include rem(margin-left, 10px);
+		display: inline-block;
+		vertical-align: top;
+		color: $color-grey;
+		transition: all $transition-speed ease;
+	}
+
+	&--sort {
+		transition: all $transition-speed ease;
+
+		&:hover {
+			color: $color-blue;
+		}
+	}
+
+	&--header &--sort-up {
+		color: $color-grey-dark;
+	}
+
+	&--header &--sort-up &__cell-icon {
+		color: $color-grey-dark;
+	}
+
+	&--sort:hover {
+		color: $color-blue;
+	}
+
+	&--sort:hover &__cell-icon {
+		color: $color-blue;
+	}
+
+	&__footer &__cell {
+		@include rem(font-size, 13px);
+		@include rem(line-height, 42px);
+		font-family: $font-heavy;
+		text-transform: uppercase;
+	}
+}
+
+
+//------------------- < 1200 ------------------//
+@media only screen and (max-width: ($width-content-xl - 1px)) {
+	.table {
+
+	}
+}
+
+//------------------- < 992 ------------------//
+@media only screen and (max-width: ($width-content-lg - 1px)) {
+	.table {
+
+	}
+}
+
+//------------------- < 768 ------------------//
+@media only screen and (max-width: ($width-content-md - 1px)) {
+	.table {
+
+	}
+}
+
+//------------------- < 576 ------------------//
+@media only screen and (max-width: ($width-content-sm - 1px)) {
+	.table {
+
+	}
+}

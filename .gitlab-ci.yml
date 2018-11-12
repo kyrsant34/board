@@ -1,0 +1,69 @@
+image: raserge/docker-base-extended:latest
+services:
+  - docker:dind
+
+variables:
+  DOCKER_DRIVER: overlay2
+  DOCKER_HOST: "tcp://docker:2375"
+
+
+stages:
+  - build
+  - tests
+  - deploy_stage
+  - deploy_prod
+
+build-utest-push-image:
+  stage: build
+  script:
+  - make docker_login
+  - make check_build_base_image
+  - make docker_build
+  - make unit_tests
+  - make docker_tag_release
+  - make docker_push_release
+  only:
+    - develop
+    - tags
+
+sonarqube-preview:
+  stage: tests
+  image: kyrsant34/gitlab-sonar-scanner-upd:0.0.1
+  variables:
+    SONAR_ANALYSIS_MODE: "preview"
+  script:
+  - /usr/bin/sonar-scanner-run
+
+sonarqube-save-reports:
+  stage: tests
+  image: raserge/gitlab-sonar-scanner-upd:0.0.1
+  variables:
+    SONAR_ANALYSIS_MODE: "publish"
+  script:
+  - /usr/bin/sonar-scanner-run
+  only:
+  - develop
+  - tags
+  - master
+
+release-stage:
+  stage: deploy_stage
+  tags:
+    - stage
+    - bastion-stage
+  before_script:
+    - eval $(ssh-agent -s)
+    - echo "$CI_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - "mkdir -p ~/.ssh && chmod 700 ~/.ssh"
+  script:
+  - "rm -rf deploy && git clone -b master --single-branch git@gitlab.com:kyrsantteam/ansible-deploy.git --depth 1 deploy"
+  - 'cd deploy && find . -name "ec2.py" -type f -exec chmod +x {} \; && ansible-playbook -i inventories/${CI_ENVIRONMENT_NAME} deploy.yml'
+  environment:
+    name: STAGE
+  only:
+   - develop
+   - tags
+  allow_failure: false
+
+release-prod:
+

@@ -1,0 +1,57 @@
+.info {
+	background: #fff;
+	margin-top: 4px;
+	@include rem(padding, 20px);
+	border-radius: $border-radius-base;
+
+	&__line {
+		display: flex;
+	}
+
+	&__title {
+		@include rem(font-size, 14px);
+		@include rem(line-height, 22px);
+		@include rem(width, 125px);
+		@include rem(min-width, 125px);
+		color: $color-grey;
+		flex-grow: 0;
+	}
+
+	&__text {
+		@include rem(font-size, 14px);
+		@include rem(line-height, 22px);
+		flex-grow: 1;
+
+		& strong {
+			font-weight: bold;
+		}
+	}
+}
+
+//------------------- < 1200 ------------------//
+@media only screen and (max-width: ($width-content-xl - 1px)) {
+	.info {
+
+	}
+}
+
+//------------------- < 992 ------------------//
+@media only screen and (max-width: ($width-content-lg - 1px)) {
+	.info {
+
+	}
+}
+
+//------------------- < 768 ------------------//
+@media only screen and (max-width: ($width-content-md - 1px)) {
+	.info {
+
+	}
+}
+
+//------------------- < 576 ------------------//
+@media only screen and (max-width: ($width-content-sm - 1px)) {
+	.info {
+
+	}
+}

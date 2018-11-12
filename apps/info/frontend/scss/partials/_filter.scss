@@ -1,0 +1,41 @@
+.filter {
+	display: flex;
+
+	&__form {
+		flex-grow: 1;
+	}
+
+	&__menu {
+		flex-grow: 0;
+		width: 500px;
+		min-width: 500px;
+	}
+}
+
+//------------------- < 1200 ------------------//
+@media only screen and (max-width: ($width-content-xl - 1px)) {
+	.filter {
+
+	}
+}
+
+//------------------- < 992 ------------------//
+@media only screen and (max-width: ($width-content-lg - 1px)) {
+	.filter {
+
+	}
+}
+
+//------------------- < 768 ------------------//
+@media only screen and (max-width: ($width-content-md - 1px)) {
+	.filter {
+
+	}
+}
+
+//------------------- < 576 ------------------//
+@media only screen and (max-width: ($width-content-sm - 1px)) {
+	.filter {
+
+	}
+}

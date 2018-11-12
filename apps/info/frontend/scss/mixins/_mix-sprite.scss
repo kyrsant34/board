@@ -1,0 +1,35 @@
+/* Микшины для получения картинок из спрайта */
+
+@mixin spriteWidth($sprite, $retina) {
+  $width: nth($sprite,5) * $retina;
+  width: $width;
+}
+
+@mixin spriteHeight($sprite, $retina) {
+  $height: nth($sprite,6) * $retina;
+  height: $height;
+}
+
+@mixin spritePosition($sprite, $retina) {
+  $pos-x: nth($sprite,3) * $retina;
+  $pos-y: nth($sprite,4) * $retina;
+  background-position: $pos-x $pos-y;
+}
+
+@mixin spriteImage($sprite, $retina) {
+   @if $retina == 1 {
+     background-image: url("#{$img-path}#{$sprite-file}");
+     //$img: nth($sprite,8);
+     //background-image: url("#{$img-path}#{$img}");
+   } @else if $retina == 2 {
+     background-image: url("#{$img-path}#{$sprite-file2x}");
+     transform: scale(0.5);
+   }
+}
+
+@mixin sprite($sprite, $retina) {
+  @include spriteImage($sprite);
+  @include spritePosition($sprite);
+  @include spriteWidth($sprite);
+  @include spriteHeight($sprite);
+}

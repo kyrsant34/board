@@ -1,0 +1,50 @@
+// VARIABLES
+@import "variables";
+@import 'sprite'; //Сгенеренные переменные с данными для микшинов спрайта
+
+// NORMALIZE
+@import 'normalize'; //normalize custom
+
+
+// FONTS
+@import "fonts";
+@import "fontello";
+
+
+// FUNCTIONS
+@import "functions";
+
+// MIXINS
+@import 'mixins/mix-sprite'; //Микшины для спрайта
+@import 'mixins/mix-rem'; //Микшин для rem
+
+@import 'mixins/clearfix'; //Микшин для clearfix
+@import 'utilities/clearfix'; //Утилита для clearfix
+
+@import 'mixins/shadow'; //Микшин для shadow
+@import 'utilities/shadow'; //Утилита для shadow
+
+
+// BOOTSTRAP СЕТКА
+@import "bootstrap/variables";
+@import "bootstrap/breakpoints";
+@import "bootstrap/grid-framework";
+@import "bootstrap/mixins-grid";
+@import "bootstrap/grid";
+
+
+// GLOBAL
+@import "scaffolding";
+
+
+// BEM-BLOCKS
+@import "partials/page";
+@import "partials/heading";
+@import "partials/menu";
+@import "partials/board";
+@import "partials/info";
+@import "partials/table";
+@import "partials/filter";
+@import "partials/form";
+@import "partials/btn";
+@import "partials/datepicker";

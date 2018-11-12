@@ -1,0 +1,15 @@
+-r requirements.in
+
+django-extensions
+mock
+Werkzeug
+graphviz
+isort
+autopep8
+autoflake
+unify
+pygraphviz
+django-object-actions
+django-simple-history
+djangorestframework-datatables
+customerio

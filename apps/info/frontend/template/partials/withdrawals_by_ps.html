@@ -1,0 +1,80 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'bootstrap-datepicker.min.css' %}">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="{% static 'bootstrap-datepicker.min.js' %}"></script>
+
+<div class="row">
+  <div class="col-md-12 text-center">
+    <h2 class="bg-primary text-white p-2">Payment systems stats</h2>
+  </div>
+</div>
+
+
+<div style="margin: 15px;">
+  <div class="row">
+    <div class="col-md-12 align-center text-left">
+      <p><b>Ready to process:</b> <span id="rtp_count">0</span> withdrawals for <span id="rtp_count_cny">0</span> CNY and <span id="rtp_count_usd">0</span> USD</p>
+      <p><b>Traders balance:</b> <span id="trader_balance_cny">0</span> CNY and <span id="trader_balance_usd">0</span> USD </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div style="vertical-align: center"> <label for="start_date" class="col-md-auto" style="margin-top: 10px;"><b>From</b></label></div>
+    <input id="start_date" type="text" class="col-sm-2 form-control datepicker">
+    <label for="end_date" class="col-md-auto" style="margin-top: 10px;"><b>To</b></label>
+    <input id="end_date" type="text" class="col-sm-2 form-control datepicker">
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="col-md-6" id="today_block">
+      <div class="info-data">
+        <p style="font-size: 22px; text-align: center;"><b>Today</b></p>
+        <p><b>Deposits:</b> <span id="today_deposits_cnt">4</span> deposits for <span id="today_deposits_cny">4</span> CNY and <span id="today_deposits_usd">4</span> USD</p>
+        <p><b>Withdrawals:</b> <span id="today_withdrawals_cnt">4</span> withdrawals for <span id="today_withdrawals_cny">4</span> CNY and <span id="today_withdrawals_usd">4</span> USD</p>
+        <p><b>New clients:</b> <span id="today_new_clients_cnt">4</span> clients</p>
+        <p><b>PNL:</b> <span id="today_pnl_usd">4</span> USD</p>
+      </div>
+    </div>
+    <div class="col-md-6" id="currect_month_block">
+      <div class="info-data">
+        <p style="font-size: 22px; text-align: center;"><b>Current month</b></p>
+        <p><b>Deposits:</b> <span id="current_month_deposits_cnt">4</span> deposits for <span id="current_month_deposits_cny">4</span> CNY and <span id="current_month_deposits_usd">4</span> USD</p>
+        <p><b>Withdrawals:</b> <span id="current_month_withdrawals_cnt">4</span> withdrawals for <span id="current_month_withdrawals_cny">4</span> CNY and <span id="current_month_withdrawals_usd">4</span> USD</p>
+        <p><b>New clients:</b> <span id="current_month_new_clients_cnt">4</span> clients</p>
+        <p><b>PNL:</b> <span id="current_month_pnl_usd">4</span> USD</p>
+      </div>
+    </div>
+    <div class="col-md-6" style="display: none;" id="selected_period_block">
+      <div class="info-data">
+        <p style="font-size: 22px; text-align: center;"><b>Selected period</b></p>
+        <p><b>Deposits:</b> <span id="selected_period_deposits_cnt">4</span> deposits for <span id="selected_period_deposits_cny">4</span> CNY and <span id="selected_period_deposits_usd">4</span> USD</p>
+        <p><b>Withdrawals:</b> <span id="selected_period_withdrawals_cnt">4</span> withdrawals for <span id="selected_period_withdrawals_cny">4</span> CNY and <span id="selected_period_withdrawals_usd">4</span> USD</p>
+        <p><b>New clients:</b> <span id="selected_period_new_clients_cnt">4</span> clients</p>
+        <p><b>PNL:</b> <span id="selected_period_pnl">4</span> USD</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table id="withdrawals-by-ps" class="table table-striped table-bordered" style="with: 100%" data-server-side="true" data-ajax="/info/withdrawals-by-ps/?format=datatables">
+      <thead>
+        <tr>
+          <th data-data="ps_title">PSP</th>
+          <th data-data="in_out">In/Out</th>
+          <th data-data="balance">Available Balance</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>
+
+<div class="row align-items-center">
+  <a href="{{ balance_correction_url }}" class="btn btn-default withdrawal-link col-sm-2" target="_blank">Внести коррекцию</a>
+  <button id="btn-show-all" class="btn btn-primary withdrawal-btn col-sm-2" >Показать все</button>
+  <button id="btn-show-active" class="btn btn-primary withdrawal-btn col-sm-2" style="display: none;">Только активные</button>
+</div>

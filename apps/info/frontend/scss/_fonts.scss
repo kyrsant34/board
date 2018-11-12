@@ -1,0 +1,51 @@
+@font-face {
+  font-family: $font-reg;
+  src: url('#{$font-path}#{$font-name-regular}.eot');
+  src: url('#{$font-path}#{$font-name-regular}.eot?#iefix') format('embedded-opentype'),
+  url('#{$font-path}#{$font-name-regular}.woff') format('woff'),
+  url('#{$font-path}#{$font-name-regular}.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: $font-reg;
+  src: url('#{$font-path}#{$font-name-bold}.eot');
+  src: url('#{$font-path}#{$font-name-bold}.eot?#iefix') format('embedded-opentype'),
+  url('#{$font-path}#{$font-name-bold}.woff') format('woff'),
+  url('#{$font-path}#{$font-name-bold}.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: $font-medium;
+  src: url('#{$font-path}#{$font-name-medium}.eot');
+  src: url('#{$font-path}#{$font-name-medium}.eot?#iefix') format('embedded-opentype'),
+  url('#{$font-path}#{$font-name-medium}.woff') format('woff'),
+  url('#{$font-path}#{$font-name-medium}.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: $font-heavy;
+  src: url('#{$font-path}#{$font-name-heavy}.eot');
+  src: url('#{$font-path}#{$font-name-heavy}.eot?#iefix') format('embedded-opentype'),
+  url('#{$font-path}#{$font-name-heavy}.woff') format('woff'),
+  url('#{$font-path}#{$font-name-heavy}.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: $font-icons;
+  src: url('#{$font-path}#{$font-name-icons}.eot?50101920');
+  src: url('#{$font-path}#{$font-name-icons}.eot?50101920#iefix') format('embedded-opentype'),
+  url('#{$font-path}#{$font-name-icons}.woff2?50101920') format('woff2'),
+  url('#{$font-path}#{$font-name-icons}.woff?50101920') format('woff'),
+  url('#{$font-path}#{$font-name-icons}.ttf?50101920') format('truetype'),
+  url('#{$font-path}#{$font-name-icons}.svg?50101920#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

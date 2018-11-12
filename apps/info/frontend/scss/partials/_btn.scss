@@ -1,0 +1,98 @@
+.btn {
+	display: inline-block;
+	vertical-align: top;
+	color: #fff;
+	border: none;
+	font-family: $font-heavy;
+	font-weight: bold;
+	@include rem(height, 42px);
+	@include rem(font-size, 14px);
+	@include rem(line-height, 42px);
+	@include rem(padding, 0px 45px);
+	cursor: pointer;
+	text-decoration: none;
+	text-align: center;
+	border-radius: $border-radius-base;
+	white-space: nowrap;
+	//text-transform: uppercase;
+	max-width: 100%;
+	transition: all $transition-speed ease;
+	background: $color-blue;
+  
+	&:hover {
+		background: darken($color-blue,5%);
+		text-decoration: none;
+		color: #fff;
+	}
+
+	&--border {
+		border: solid 2px $color-blue;
+		background: none;
+		color: $color-blue;
+		@include rem(line-height, 38px);
+
+		&:hover {
+			background: $color-blue;
+			color: #fff;
+		}
+	}
+
+	&--fill {
+		width: 100%;
+		padding: 0px;
+	}
+
+	&--red {
+		background: $color-red;
+
+		&:hover {
+			background: darken($color-red,5%);
+		}
+	}
+
+	&--red.btn--border {
+		border: solid 2px $color-red;
+		background: none;
+		color: $color-red;
+
+		&:hover {
+			background: $color-red;
+			color: #fff;
+		}
+	}
+}
+
+//------------------- < 1200 ------------------//
+@media only screen and (max-width: ($width-content-xl - 1px)) {
+	.btn {
+
+	}
+}
+
+//------------------- < 992 ------------------//
+@media only screen and (max-width: ($width-content-lg - 1px)) {
+	.btn {
+
+	}
+}
+
+//------------------- < 992 > 768 ------------------//
+@media only screen and (max-width: ($width-content-lg - 1px)) and (min-width: ($width-content-md)) {
+	.btn {
+
+	}
+}
+
+//------------------- < 768 ------------------//
+@media only screen and (max-width: ($width-content-md - 1px)) {
+	.btn {
+
+	}
+}
+
+//------------------- < 576 ------------------//
+@media only screen and (max-width: ($width-content-sm - 1px)) {
+	.btn {
+
+	}
+}

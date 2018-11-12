@@ -1,0 +1,145 @@
+.datepicker {
+	cursor: pointer;
+
+	&[disabled] {
+		cursor: default;
+	}
+}
+
+#ui-datepicker-div {
+	background: $color-blue;
+	color: #fff;
+	border: none;
+
+	& .ui-state-default {
+		background: darken($color-blue,15%);
+		color: #b4b7dc;
+		border: none;
+		text-align: center;
+		border: solid 2px darken($color-blue,15%);
+
+		&:hover {
+			color: #fff;
+			background: darken($color-blue,20%);
+			border: solid 2px darken($color-blue,20%);
+		}
+	}
+
+	& .ui-datepicker-today .ui-state-default {
+		background: darken($color-blue,15%);
+		border: solid 2px $color-orange;
+		color: #fff;
+	}
+
+	& .ui-datepicker-current-day .ui-state-default {
+		background: $color-red;
+		border: solid 2px $color-red;
+		color: #fff;
+	}
+
+	& .ui-datepicker-today.ui-datepicker-current-day .ui-state-default {
+		border: solid 2px $color-orange;
+	}
+
+	& .ui-widget-header {
+		background: #fff;
+		border: none;
+		border-radius: 0;
+		padding: 5px 0;
+	}
+
+	& select {
+		border-color: darken($color-blue,15%);
+		margin: 0 2px;
+		border-radius: $border-radius-base;
+	}
+
+	& .ui-widget-header a {
+		background: $color-blue;
+		border-radius: 50%;
+		text-align: center;
+		width: 28px;
+		height: 28px;
+		top: 50%;
+		margin-top: -14px;
+		border: 0;
+		transition: all $transition-speed ease;
+		cursor: pointer;
+
+		& span {
+			background: none;
+			display: inline-block;
+		}
+
+		&.ui-datepicker-next span {
+			border: 8px solid transparent;
+			border-left: 8px solid #fff;
+			margin-left: -2px;
+		}
+
+		&.ui-datepicker-prev span {
+			border: 8px solid transparent;
+			border-right: 8px solid #fff;
+			left: unset;
+			right: 50%;
+			margin-left: 0px;
+			margin-right: -2px;
+		}
+
+		&:hover {
+			border: 0;
+			background: $color-red;
+		}
+
+		&.ui-datepicker-next:hover {
+			right: 6px;
+		}
+
+		&.ui-datepicker-prev:hover {
+			left: 6px;
+		}
+	}
+
+	& .ui-widget-header a.ui-datepicker-prev {
+		left: 6px;
+	}
+
+	& .ui-widget-header a.ui-datepicker-next {
+		right: 6px;
+	}
+}
+
+//------------------- < 1200 ------------------//
+@media only screen and (max-width: ($width-content-xl - 1px)) {
+	.datepicker {
+
+	}
+}
+
+//------------------- < 992 ------------------//
+@media only screen and (max-width: ($width-content-lg - 1px)) {
+	.datepicker {
+
+	}
+}
+
+//------------------- < 992 > 768 ------------------//
+@media only screen and (max-width: ($width-content-lg - 1px)) and (min-width: ($width-content-md)) {
+	.datepicker {
+
+	}
+}
+
+//------------------- < 768 ------------------//
+@media only screen and (max-width: ($width-content-md - 1px)) {
+	.datepicker {
+
+	}
+}
+
+//------------------- < 576 ------------------//
+@media only screen and (max-width: ($width-content-sm - 1px)) {
+	.datepicker {
+
+	}
+}

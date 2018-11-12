@@ -1,0 +1,138 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>INFO</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        <link rel="stylesheet" type="text/css" href="{% static 'info/build/css/libs.min.css' %}" media="screen" />
+        <link rel="stylesheet" type="text/css" href="{% static 'info/build/css/main.min.css' %}" media="screen" />
+    </head>
+    <body>
+
+<div class="page">
+  <main class="page__content">
+    <section class="page__section">
+        <div class="page__content-inner">
+            <h2 class="heading">Payment systems stats</h2>
+            <div class="filter col-bottom-min">
+                <ul id="ul-date-range" class="filter__menu menu">
+                    <li class="menu__item menu--active" date-id="today"><a class="js-range-date" href="">Today</a></li>
+                    <li class="menu__item" date-id="yesterday"><a class="js-range-date" href="">Yesterday</a></li>
+                    <li class="menu__item" date-id="week"><a class="js-range-date" href="">This week</a></li>
+                    <li class="menu__item" date-id="month"><a class="js-range-date" href="">This month</a></li>
+                    <li class="menu__item" date-id="custom"><a class="js-range-date" href="">Custom</a></li>
+                </ul>
+                <div class="filter__form form__flex">
+                    <div class="form__field form--field-inline">
+                        <div class="form__title">Show stats from</div>
+                        <div class="form__input-wrap">
+                            <input id="start-date" placeholder="Choose date" name="" value="01/09/2018" type="text" class="form__input datepicker from" />
+                            <div class="form__input-icon"><span class="icon--calendar"></span></div>
+                        </div>
+                    </div>
+                    <div class="form__field form--field-inline">
+                        <div class="form__title">to</div>
+                        <div class="form__input-wrap">
+                            <input id="end-date" placeholder="Choose date" name="" value="01/09/2018" type="text" class="form__input datepicker to"/>
+                            <div class="form__input-icon"><span class="icon--calendar"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="board">
+                        <div class="board__item">
+                            <div class="board__body">
+                                <div id="selected_period_deposits_cnt" class="board__value">0</div>
+                                <div class="board__title">deposits</div>
+                            </div>
+                        </div>
+                        <div class="board__item">
+                            <div class="board__body">
+                                <div id="selected_period_deposits_cny" class="board__value">0</div>
+                                <div class="board__title">CNY</div>
+                            </div>
+                        </div>
+                        <div class="board__item">
+                            <div class="board__body">
+                                <div id="selected_period_deposits_usd" class="board__value">0</div>
+                                <div class="board__title">USD</div>
+                            </div>
+                        </div>
+                        <div class="board__item board--orange">
+                            <div class="board__body">
+                                <div id="selected_period_new_clients_cnt" class="board__value">0</div>
+                                <div class="board__title">new clients</div>
+                            </div>
+                        </div>
+                        <div class="board__item board--orange">
+                            <div class="board__body">
+                                <div id="selected_period_pnl_cny" class="board__value">0</div>
+                                <div class="board__title">profit & loss, CNY</div>
+                            </div>
+                        </div>
+                        <div class="board__item board--orange">
+                            <div class="board__body">
+                                <div id="selected_period_pnl_usd" class="board__value">0</div>
+                                <div class="board__title">profit & loss, USD</div>
+                            </div>
+                        </div>
+                        <div class="board__item board--red">
+                            <div class="board__body">
+                                <div id="selected_period_withdrawals_cnt" class="board__value">0</div>
+                                <div class="board__title">withdrawals</div>
+                            </div>
+                        </div>
+                        <div class="board__item board--red">
+                            <div class="board__body">
+                                <div id="selected_period_withdrawals_cny" class="board__value">0</div>
+                                <div class="board__title">CNY</div>
+                            </div>
+                        </div>
+                        <div class="board__item board--red">
+                            <div class="board__body">
+                                <div id="selected_period_withdrawals_usd" class="board__value">0</div>
+                                <div class="board__title">USD</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info">
+                        <div class="info__line">
+                            <div class="info__title">Ready to process:</div>
+                            <div class="info__text"><span id="js_rtp_count">0</span> withdrawals for <strong><span id="js_rtp_count_cny">0</span> CNY</strong> and <strong><span id="js_rtp_count_usd">0</span> USD</strong></div>
+                        </div>
+                        <div class="info__line">
+                            <div class="info__title">Traders balance:</div>
+                            <div class="info__text"><strong><span id="js_trader_balance_cny">0</span> CNY</strong> and <strong><span id="js_trader_balance_usd">0</span> USD</strong></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="table">
+                        <div class="table__line table--header">
+                            <a href="" class="table__cell table--cell-evlat1 table--sort">PSP<span class="table__cell-icon icon--sort-down"></span></a>
+                            <a href="" class="table__cell table--cell-evlat2 table--sort table--sort-up">In/Out<span class="table__cell-icon icon--sort-up"></span></a>
+                            <a href="" class="table__cell table--cell-evlat3 table--sort">Available balance<span class="table__cell-icon icon--sort-down"></span></a>
+                        </div>
+                        <div id="table-by-ps" class="table__body"></div>
+                        <div class="clearfix col-top-min">
+                          <a id="btn-show-all" href="" data-enabled="true" class="btn right marg-l-micro">Show all</a>
+                          <a id="btn-make-correction" href="{{ balance_correction_url }}" target="_blank" class="btn btn--red right">Make correction</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  </main>
+</div>
+<script type="text/javascript" src="{% static 'info/build/js/libs.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'info/build/js/scripts.min.js' %}"></script>
+</body>
+</html>

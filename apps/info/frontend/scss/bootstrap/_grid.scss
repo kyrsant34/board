@@ -1,0 +1,306 @@
+// Container widths
+//
+// Set the container width, and override it for fixed navbars in media queries.
+
+.container {
+  //@include make-container();
+  //@include make-container-max-widths();
+  width: 100%;
+}
+
+
+// Fluid container
+//
+// Utilizes the mixin meant for fixed width containers, but without any defined
+// width for fluid, full width layouts.
+
+/*.container-fluid {
+  @include make-container();
+}*/
+
+
+// Row
+//
+// Rows contain and clear the floats of your columns.
+
+.row {
+    @include make-row();
+    //justify-content: space-around;
+
+    &--vert-center {
+        align-items: center;
+    }
+
+    &--vert-bottom {
+        align-items: flex-end;
+    }
+
+    // Remove the negative margin from default .row, then the horizontal padding
+    // from all immediate children columns (to prevent runaway style inheritance).
+    &--no-padd {
+        margin-right: 0;
+        margin-left: 0;
+
+        > .col,
+        > [class*="col-"] {
+            padding-right: 0;
+            padding-left: 0;
+        }
+    }
+
+    &--padd-min {
+        margin-right: -10px;
+        margin-left: -10px;
+
+        > .col,
+        > [class*="col-"] {
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+    }
+
+    &--padd-micro {
+        margin-right: -5px;
+        margin-left: -5px;
+
+        > .col,
+        > [class*="col-"] {
+            padding-right: 5px;
+            padding-left: 5px;
+        }
+    }
+}
+
+.col-onesize {
+    height: 100%;
+}
+
+
+// Columns
+//
+// Common styles for small and large grid columns
+
+@include make-grid-columns();
+
+
+/*.content-main {
+  @include make-col-ready();
+
+  @media (max-width: 32em) {
+    @include make-col(6);
+  }
+  @media (min-width: 32.1em) {
+    @include make-col(8);
+  }
+}
+
+.content-secondary {
+  @include make-col-ready();
+
+  @media (max-width: 32em) {
+    @include make-col(6);
+  }
+  @media (min-width: 32.1em) {
+    @include make-col(4);
+  }
+}*/
+
+.col-lg-visiable,
+.col-md-visiable,
+.col-sm-visiable,
+.col-xsm-visiable {
+    display: none !important;
+}
+
+//---------------- POS
+.pos-center {
+	text-align: center;
+}
+
+.pos-right {
+	text-align: right;
+}
+
+.pos-left {
+	text-align: left;
+}
+//---------------- POS
+
+
+.col-top {
+    @include rem(margin-top, 30px);
+}
+
+.col-top-min {
+    @include rem(margin-top, 20px);
+}
+
+.col-bottom {
+    @include rem(margin-bottom, 30px);
+}
+
+.col-bottom-min {
+    @include rem(margin-bottom, 20px);
+}
+
+.marg-l-micro {
+    @include rem(margin-left, 5px);
+}
+
+//------------------- < 1200 ------------------//
+@media only screen and (max-width: ($width-content-xl - 1px)) {
+    .col-lg-visiable {
+        display: block !important;
+    }
+
+    .col-lg-visiable-inline {
+        display: inline-block !important;
+    }
+
+    .col-lg-hidden {
+        display: none !important;
+    }
+
+    //---------------- POS
+    .pos-lg-center {
+        text-align: center;
+    }
+
+    .pos-lg-right {
+        text-align: right;
+    }
+
+    .pos-lg-left {
+        text-align: left;
+    }
+    //---------------- POS
+
+}
+
+//------------------- < 992 ------------------//
+@media only screen and (max-width: ($width-content-lg - 1px)) {
+    .col-md-visiable {
+        display: block !important;
+    }
+
+    .col-md-visiable-inline {
+        display: inline-block !important;
+    }
+
+    .col-md-hidden {
+        display: none !important;
+    }
+
+    //---------------- POS
+    .pos-md-center {
+        text-align: center;
+    }
+
+    .pos-md-right {
+        text-align: right;
+    }
+
+    .pos-md-left {
+        text-align: left;
+    }
+    //---------------- POS
+}
+
+
+//------------------- < 768 ------------------//
+@media only screen and (max-width: ($width-content-md - 1px)) {
+    .row--md-reverse {
+        flex-direction: column-reverse;
+    }
+
+    .col-sm-visiable {
+        display: block !important;
+    }
+
+    .col-sm-visiable-only {
+        display: block !important;
+    }
+
+    .col-sm-hidden-only {
+        display: none !important;
+    }
+
+    .col-sm-visiable-inline {
+        display: inline-block !important;
+    }
+
+    .col-sm-hidden {
+        display: none !important;
+    }
+
+    .col-sm-full {
+        width: 100% !important;
+    }
+
+    .row--sm-vert-center {
+        align-items: center;
+    }
+
+    //---------------- POS
+    .pos-sm-center {
+        text-align: center;
+    }
+
+    .pos-sm-right {
+        text-align: right;
+    }
+
+    .pos-sm-left {
+        text-align: left;
+    }
+    //---------------- POS
+
+    .col-sm-bottom {
+        @include rem(margin-bottom, 40px);
+    }
+}
+
+//------------------- < 576 ------------------//
+@media only screen and (max-width: ($width-content-sm - 1px)) {
+    .col-sm-visiable-only {
+        display: none !important;
+    }
+
+    .col-sm-hidden-only {
+        display: block !important;
+    }
+
+    .row-xsm-center {
+        justify-content: center;
+    }
+
+    .col-xsm-visiable {
+        display: block !important;
+    }
+
+    .col-xsm-visiable-inline {
+        display: inline-block !important;
+    }
+
+    .col-xsm-hidden {
+        display: none !important;
+    }
+
+    //---------------- POS
+    .pos-xsm-center {
+        text-align: center;
+    }
+
+    .pos-xsm-right {
+        text-align: right;
+    }
+
+    .pos-xsm-left {
+        text-align: left;
+    }
+    //---------------- POS
+
+    .col-xsm-bottom {
+        @include rem(margin-bottom, 40px);
+    }
+}

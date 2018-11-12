@@ -1,0 +1,7 @@
+@mixin shadow() {
+  box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.07);
+}
+
+@mixin shadow-form() {
+  box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.09);
+}

@@ -1,0 +1,21 @@
+FROM python:3.6-alpine3.7
+ENV PYTHONUNBUFFERED 1
+
+RUN mkdir /install
+WORKDIR /install
+
+RUN apk update && \
+    apk add --no-cache \
+        build-base \
+        coreutils \
+        mariadb-dev \
+        jpeg-dev \
+        zlib-dev \
+        libffi \
+        libffi-dev \
+        graphviz \
+        graphviz-dev
+
+COPY dev-requirements.txt /dev-requirements.txt
+
+RUN pip install --install-option="--prefix=/install" -r /dev-requirements.txt
